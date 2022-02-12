@@ -3,12 +3,13 @@
   <arg name="map_file" default="$(find scuttle_navigation)/maps/map.yaml"/>
   <arg name="open_rviz" default="true"/>
   <arg name="move_forward_only" default="false"/>
+  <arg name="is_physical" default="false"/>
 
   <!-- Turtlebot3 -->
-  <!--
-  <include file="$(find scuttle_bringup)/launch/scuttle_remote.launch">
-  </include>
-  -->
+  <group if="$(arg is_physical)">
+    <include file="$(find scuttle_bringup)/launch/scuttle_bringup.launch">
+    </include>
+  </group>
 
   <!-- Map server -->
   <node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)"/>
