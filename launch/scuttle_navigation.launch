@@ -5,12 +5,13 @@
   <arg name="is_physical" default="true"/>
 
   <!-- Map server -->
+  <!--
   <group unless="$(arg is_physical)">
     <node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)"/>
 
-    <!-- AMCL -->
     <include file="$(find scuttle_navigation)/launch/amcl.launch"/>
   </group>
+  -->
 
   <!-- move_base -->
   <include file="$(find scuttle_navigation)/launch/move_base.launch">
