@@ -1,20 +1,8 @@
 <launch>
   <!-- Arguments -->
   <arg name="map_file" default="$(find scuttle_navigation)/maps/map.yaml"/>
-  <arg name="open_rviz" default="false"/>
   <arg name="move_forward_only" default="false"/>
   <arg name="is_physical" default="true"/>
-
-  <!--
-    This should probably not be here, but it is for now for testing ...
-  -->
-  <node pkg="tf2_ros" type="static_transform_publisher" name="link1_broadcaster" args="0 0 0 0 0 0 1 map odom" />
-
-  <!-- Turtlebot3 -->
-  <group if="$(arg is_physical)">
-    <include file="$(find scuttle_bringup)/launch/scuttle_bringup.launch">
-    </include>
-  </group>
 
   <!-- Map server -->
   <group unless="$(arg is_physical)">
@@ -28,10 +16,4 @@
   <include file="$(find scuttle_navigation)/launch/move_base.launch">
     <arg name="move_forward_only" value="$(arg move_forward_only)"/>
   </include>
-
-  <!-- rviz -->
-  <group if="$(arg open_rviz)">
-    <node pkg="rviz" type="rviz" name="rviz" required="true"
-          args="-d $(find scuttle_navigation)/rviz/scuttle_navigation.rviz"/>
-  </group>
 </launch>
