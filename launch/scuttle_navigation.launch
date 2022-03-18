@@ -5,7 +5,12 @@
   <arg name="is_physical" default="true"/>
 
   <!-- Map server -->
-  <!-- Only start acml if we're in map following mode. It won't work without a map
+  <!--
+    Only start acml if we're in map following mode, i.e. if we're not running SLAM at the same time.
+    If there is no map server then ACML will hang forever while it waits for the map server to start.
+    And the map server needs a map file.
+  -->
+  <!--
   <group unless="$(arg is_physical)">
     <node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)"/>
 
