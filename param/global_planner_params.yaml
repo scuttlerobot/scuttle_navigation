@@ -29,7 +29,7 @@ GlobalPlanner:
   # Neutral Cost (dynamic reconfigure)
   neutral_cost: 50
   # Factor to multiply each cost from costmap by (dynamic reconfigure)
-  cost_factor: 3
+  cost_factor: 0.8
 
   # Publish Potential Costmap (dynamic reconfigure)
   publish_potential: true
