@@ -41,7 +41,7 @@ local_costmap:
 
   obstacle_layer:
     combination_method: 1 #default 1, meaning we will combine the layers
-    observation_sources: laser_scan_sensor, point_cloud_sensor
+    observation_sources: laser_scan_sensor point_cloud_sensor
     track_unknown_space: false            # Set to fals because the DWA local planner doesn't like unknown space
     map_type: costmap
     laser_scan_sensor:
